@@ -1,0 +1,52 @@
+name: p1
+
+on:
+  workflow_dispatch: 
+    inputs:
+      name:
+        default: 'john'
+        description: 'name of the person'
+        type: string
+        required: true
+        options:
+          - 'Joe'
+          - 'Amy'
+
+push:
+  branches: ['main', 'dev']
+  branches-ignore:
+    - release/*
+  paths:
+    - ./src/*
+
+concurrency: 
+  cancel-in-progress: false
+  group: 'p1-group'
+  queue: max
+
+description: 'p1 pipeline'
+run-name: ${{ github.ref_name }} - Run
+
+env:
+  AWS_REGION: us-east-1
+  ENVIRONMENT: dev
+
+defaults:
+  run:
+    shell: bash
+    working-directory: ./src
+
+jobs:
+  greet:
+    steps:
+      - name: 'Checkout Code'
+        uses: actions/checkout@v7
+        with:
+          ref: "dev"
+      
+  
+
+
+
+
+
