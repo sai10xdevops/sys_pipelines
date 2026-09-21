@@ -31,6 +31,7 @@ defaults:
 
 jobs:
   greet:
+    runs_on: ubuntu-latest
     steps:
       - name: 'Checkout Code'
         uses: actions/checkout@v7
