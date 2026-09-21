@@ -12,13 +12,6 @@ on:
           - 'Joe'
           - 'Amy'
 
-push:
-  branches: ['main', 'dev']
-  branches-ignore:
-    - release/*
-  paths:
-    - ./src/*
-
 concurrency: 
   cancel-in-progress: false
   group: 'p1-group'
